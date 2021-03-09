@@ -1,0 +1,11 @@
+.input-container{
+    display: flex;
+    flex-direction: column;
+    .ant-input{
+        margin: 5px 0 !important;
+    }
+    .ant-btn{
+        margin: 5px 0 !important;
+    }
+    
+}
