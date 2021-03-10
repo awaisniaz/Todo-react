@@ -1,11 +1,56 @@
 .input-container{
     display: flex;
     flex-direction: column;
-    .ant-input{
-        margin: 5px 0 !important;
-    }
+    border-bottom: 1px dashed #ddd;
+    margin-bottom: 2px;
+
     .ant-btn{
         margin: 5px 0 !important;
     }
-    
+    .data-field{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+        
+     .ant-input{
+        margin: 5px 5px 5px 0  !important;
+        flex: 5;
+    }
+    .ant-picker{
+        flex: 1;
+        height: 40px;
+    }
 }
+    .ant-card-body{
+        .card-body{
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+    }
+    .ant-card-head{
+        height: 25px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-dialog{
+        height: calc(100% - 93px);
+        overflow: auto;
+        .ant-card{
+            margin: 5px 5px 5px 0;
+        }
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: violet;
+    border-radius: 10px;
+  }  
