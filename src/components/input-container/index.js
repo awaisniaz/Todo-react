@@ -1,19 +1,24 @@
-import React, { useState } from 'react'
-import { Input, Button, Card, DatePicker } from 'antd';
+import React, { useState, useEffect } from 'react'
+import { Input, Button, Checkbox, DatePicker } from 'antd';
 import moment from 'moment'
 import './styles.scss'
 import 'antd/dist/antd.css';
+import { saveData, getTodo } from '../../libs/index'
 
 function Inputcontainer() {
     const [card, setcard] = useState([])
-    const [input, setInput] = useState('')
-    const [date, setDate] = useState()
+    const [input, setInput] = useState(null)
+    const [date, setDate] = useState(null)
     const addTask = () => {
-        const newTask = { 'task': input, 'date': date }
-        setcard([newTask, ...card])
-        setInput('')
-        setDate('')
+        saveData(input, date)
+        setcard([...card, { task: input, date: date }])
     }
+
+    useEffect(() => {
+        const response = getTodo()
+        
+        setcard([...card, response])
+    }, [input])
     return (
         <>
             <div className="input-container">
@@ -29,25 +34,24 @@ function Inputcontainer() {
                             setDate(moment(date).format('DD/MM/YYYY'))
                         }} />
                 </div>
-                <Button type="primary"
+                <Button
+                    type="primary"
                     onClick={() => {
                         addTask()
-
-
-
-
-                    }}>Add Task</Button>
+                    }}
+                    className={`${input === null ? 'disable' : ''}`}
+                >Add Task</Button>
             </div>
             <div className="card-dialog">
                 {
-                    (card || []).map((item, index) => {
-                        return <Card title={`Task ${index + 1}`}>
-                            <div className="card-body">
-                                <p>{item.task}</p>
-                                <p>{item.date}</p>
-                            </div>
-                        </Card>
-                    })
+                    (card || []).map(item => {
+                        return <div className="card-body" >
+                            <Checkbox />
+                            <p>{item.task}</p>
+                            <p>{item.date}</p>
+                        </div>
+                    }
+                    )
                 }
 
             </div>

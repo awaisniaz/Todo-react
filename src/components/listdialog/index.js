@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Inputcontainer from '../input-container/index'
 import './styles.scss'
 function TodoChip() {
